@@ -1,6 +1,6 @@
 import type { Route } from "./+types/home";
 
-export function meta({}: Route.MetaArgs) {
+export function meta({ }: Route.MetaArgs) {
   return [
     { title: "Rama Sakti — Fullstack Developer" },
     {
@@ -10,18 +10,28 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-const skills = ["React", "TypeScript", "Node.js", "Laravel", "PostgreSQL", "Tailwind CSS"];
+const skills = [
+  { name: "JavaScript", icon: "https://cdn.simpleicons.org/javascript/F7DF1E" },
+  { name: "PHP", icon: "https://cdn.simpleicons.org/php/777BB4" },
+  { name: "C++", icon: "https://cdn.simpleicons.org/cplusplus/00599C" },
+  { name: "Golang", icon: "https://cdn.simpleicons.org/go/00ADD8" },
+  { name: "Docker", icon: "https://cdn.simpleicons.org/docker/00ADD8" },
+  { name: "Express", icon: "https://cdn.simpleicons.org/express/000000" },
+  { name: "Elysia", icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMgqEH1BV7dXQyw3Q2nAu-QRsQHBxeOQl8Sc1gd0ThLw&s=10" },
+  { name: "Laravel", icon: "https://cdn.simpleicons.org/laravel/FF2D20" },
+  { name: "Fiber", icon: "https://files.gitbook.com/v0/b/gitbook-legacy-files/o/spaces%2F-M-XEvRn3rhe8BDVGkss%2Favatar-rectangle.png?generation=1582298855816936&alt=media" },
+];
 
-const projects = [
-  { name: "SIMSKUL", description: "Super app sekolah yang menghimpun berbagai aplikasi pendidikan dalam platform yang fleksibel.", url: "#", image: "/projects/simskul.jpg" },
-  { name: "Aplikasi Canvassing DPC PDIP Kabupaten Pasuruan", description: "Aplikasi pendataan kader yang melakukan pembagian bansos untuk mendukung koordinasi kampanye politik.", url: "#" },
-  { name: "CIKA", description: "Catatan keuangan otomatis melalui bot WhatsApp yang terhubung ke Google Spreadsheet milik setiap pengguna.", url: "#" },
+const projects: { name: string; description: string; url: string; image?: string }[] = [
+  { name: "SIMSKUL", description: "Super app sekolah yang menghimpun berbagai aplikasi pendidikan dalam platform yang fleksibel.", url: "https://simskul.id"},
+  { name: "Aplikasi Canvassing DPC PDIP Kabupaten Pasuruan", description: "Aplikasi pendataan kader yang melakukan pembagian bansos untuk mendukung koordinasi kampanye politik.", url: "https://github.com/AriTopan07/pdip-pasuruan" },
+  { name: "CIKA", description: "Catatan keuangan otomatis melalui bot WhatsApp yang terhubung ke Google Spreadsheet milik setiap pengguna.", url: "https://cika.simskul.id" },
   { name: "LogiTrack", description: "Mini ERP pergudangan dengan manajemen stok, transaksi keluar-masuk, dan surat jalan otomatis.", url: "#" },
-  { name: "Wedora", description: "Aplikasi manajemen Wedding Organizer untuk inventaris, vendor, talent, penjadwalan, dan pembayaran bertahap.", url: "#" },
-  { name: "GForm Exam", description: "Wrapper ujian online berbasis Google Form dan Safe Exam Browser yang menyembunyikan link ujian asli.", url: "#" },
-  { name: "Arditama", description: "Landing page website sekolah SMP Arditama Waru Sidoarjo.", url: "#" },
+  { name: "BrideOps", description: "Aplikasi manajemen Wedding Organizer untuk inventaris, vendor, talent, penjadwalan, dan pembayaran bertahap.", url: "https://brideops.simskul.id" },
+  { name: "GForm Exam", description: "Wrapper ujian online berbasis Google Form dan Safe Exam Browser yang menyembunyikan link ujian asli.", url: "https://github.com/ramasakti/gform-exam" },
+  { name: "Arditama", description: "Landing page website sekolah SMP Arditama Waru Sidoarjo.", url: "https://smparditama.sch.id" },
   { name: "SIMSKUL Exam Browser", description: "Aplikasi Android berbasis Kotlin untuk ujian melalui QR code, token, batas waktu, dan kontrol akses.", url: "#" },
-  { name: "QRIS PG", description: "Payment gateway pribadi yang mengubah QRIS static menjadi dynamic dan memperbarui status pembayaran melalui webhook.", url: "#" },
+  { name: "QRIS PG", description: "Payment gateway pribadi yang mengubah QRIS static menjadi dynamic dan memperbarui status pembayaran melalui webhook.", url: "https://qris.simskul.id" },
 ];
 
 export async function loader() {
@@ -67,11 +77,11 @@ export default function Home({ loaderData }: Route.ComponentProps) {
       <nav className="site-nav page-shell" aria-label="Navigasi utama">
         <a className="brand" href="#top">RS<span>.</span></a>
         <div className="nav-links">
-          <a href="#about">Tentang</a>
+          <a href="#about">Tech Stack</a>
           <a href="#career">Karir</a>
           <a href="#work">Project</a>
         </div>
-        <a className="nav-contact" href="mailto:hello@ramasakti.dev">Mari bicara <span>↗</span></a>
+        <a className="nav-contact" href="mailto:ramasakti1337@gmail.com">Mari bicara <span>↗</span></a>
       </nav>
 
       <section className="hero page-shell" id="top">
@@ -81,19 +91,15 @@ export default function Home({ loaderData }: Route.ComponentProps) {
           <p className="hero-lead">Saya Rama Sakti, seorang fullstack developer dan software engineer yang senang mengubah ide kompleks menjadi pengalaman digital yang sederhana.</p>
           <div className="hero-actions">
             <a className="button button-dark" href="#work">Lihat project <span>↗</span></a>
-            <a className="text-link" href="mailto:hello@ramasakti.dev">Hubungi saya <span>↗</span></a>
+            <a className="text-link" href="mailto:ramasakti1337@gmail.com">Hubungi saya <span>↗</span></a>
           </div>
         </div>
-        <div className="hero-mark"><img src="/profile.jpg" alt="Foto Rama Sakti" /><i /></div>
+        <div className="hero-mark"><img src="/foto.jpeg" alt="Foto Rama Sakti" /><i /></div>
       </section>
 
       <section className="intro-section page-shell" id="about">
-        <div className="section-label">01 / Tentang saya</div>
-        <div className="intro-grid">
-          <h2>Developer dengan perhatian pada <strong>detail.</strong></h2>
-          <div className="intro-body"><p>Saya percaya software yang baik bukan hanya tentang kode yang berjalan, tetapi juga tentang bagaimana ia membantu orang menyelesaikan sesuatu dengan lebih baik.</p><p>Dengan pengalaman di dunia pendidikan dan industri, saya terbiasa bekerja end-to-end — dari merancang ide hingga menghadirkannya dalam bentuk produk.</p></div>
-        </div>
-        <div className="skill-list">{skills.map((skill) => <span key={skill}>{skill}</span>)}</div>
+        <div className="section-label">01 / Tech Stack saya</div>
+        <div className="skill-list">{skills.map((skill) => <span key={skill.name}><img src={skill.icon} alt="" />{skill.name}</span>)}</div>
       </section>
 
       <section className="experience-section page-shell" id="career">
@@ -102,12 +108,12 @@ export default function Home({ loaderData }: Route.ComponentProps) {
       </section>
 
       <section className="work-section page-shell" id="work">
-        <div className="section-label">03 / Selected work</div>
+        <div className="section-label">03 / Project</div>
         <div className="work-heading"><h2>Beberapa hal yang <em>pernah</em> saya buat.</h2><p>Solusi digital yang dirancang untuk kebutuhan nyata.</p></div>
-        <div className="project-list">{projects.map((project, index) => <article className="project-placeholder" key={project.name}>{images[project.name] ? <img className="project-image" src={images[project.name]} alt="" /> : <div className="project-image project-image-empty" aria-hidden="true" /> }<span className="placeholder-number">{String(index + 1).padStart(2, "0")}</span><div><h3>{project.name}</h3><p>{project.description}</p></div><a className="placeholder-arrow" href={project.url} target="_blank" rel="noreferrer" aria-label={`Buka ${project.name}`}>↗</a></article>)}</div>
+        <div className="project-list">{projects.map((project, index) => <article className="project-placeholder" key={project.name}>{images[project.name] ? <img className="project-image" src={images[project.name]} alt="" /> : <div className="project-image project-image-empty" aria-hidden="true" />}<span className="placeholder-number">{String(index + 1).padStart(2, "0")}</span><div><h3>{project.name}</h3><p>{project.description}</p></div><a className="placeholder-arrow" href={project.url} target="_blank" rel="noreferrer" aria-label={`Buka ${project.name}`}>↗</a></article>)}</div>
       </section>
 
-      <footer className="footer page-shell"><div><a className="brand" href="#top">RS<span>.</span></a><p>Mari membuat sesuatu yang berdampak.</p></div><div className="footer-links"><a href="mailto:hello@ramasakti.dev">Email ↗</a><a href="#top">LinkedIn ↗</a><a href="#top">GitHub ↗</a></div><small>© 2024 Rama Sakti</small></footer>
+      <footer className="footer page-shell"><div><a className="brand" href="#top">RS<span>.</span></a><p>Mari membuat sesuatu yang berdampak.</p></div><div className="footer-links"><a href="mailto:ramasakti1337@gmail.com">Email ↗</a><a href="https://www.linkedin.com/in/rama-sakti-a65228193/">LinkedIn ↗</a><a href="https://github.com/ramasakti">GitHub ↗</a></div><small>© 2024 Rama Sakti</small></footer>
     </main>
   );
 }
